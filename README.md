@@ -143,5 +143,4 @@ curl -X POST http://localhost:8080/api/assistant/chat \
  📄 License
 
 MIT License © 2025 [Akshat Sachdeva](https://github.com/Akshatsachdev)
-
-```
+---
