@@ -1,173 +1,147 @@
-### ✅ **README.md**
 
-```markdown
-# Code-Garage Backend 🚀
+````markdown
+ 🧾 Project Raseed Backend
 
-Code-Garage Backend is a **Node.js + TypeScript** application that powers the **AI-powered expense management and gamification system**.  
-It integrates **Google Cloud Vertex AI (Gemini)** for conversational AI and budgeting insights, and **Cloud Translation API** for multilingual support.
-
----
-
-## ✅ Features
-- **Gemini AI Chatbot** – Conversational AI for expense tips and budgeting.
-- **Expense Insights** – AI-powered financial analysis and savings recommendations.
-- **Multilingual Support** – Auto-translation for user messages using Google Cloud Translation API.
-- **Gamification Engine** – Streak Builder and reward-based challenges.
-- **Secure Environment Setup** – No credentials stored in code.
+A modular Node.js + TypeScript backend for Project Raseed, an AI-powered receipt management and financial advisory system.  
+This backend simulates integrations with Google Cloud and Firebase services using mock implementations for efficient local development and testing.
 
 ---
 
-## ✅ Tech Stack
-- **Backend Framework**: Node.js + Express + TypeScript
-- **AI**: Google Vertex AI (Gemini)
-- **Translation**: Google Cloud Translation API
-- **Hosting**: Firebase / Google Cloud Run (Optional)
-- **Database**: Firestore (Optional, can be removed if not used)
-- **Environment Management**: dotenv
+ 🚀 Features
+
+- 🔐 Firebase Auth (Mock) – Simulates role-based login & session handling
+- 🧾 Firestore (Mock) – Mimics database for users, receipts, transactions
+- 📷 Google Vision API (Mock) – OCR for receipt scanning
+- 🤖 Vertex AI (Mock) – Conversational assistant for budgeting tips
+- 🌐 Translation API (Mock) – Multilingual chatbot support
+- 🔔 Google Pub/Sub (Mock) – Handles async tasks
+- 🧩 Modular Express.js – Well-structured and scalable backend design
 
 ---
 
-## ✅ Project Structure
-```
+ 📦 Prerequisites
 
-project-raseed-backend/
-├── src/
-│   ├── app.ts              # Express app setup
-│   ├── server.ts           # Server entry point
-│   ├── configs/
-│   │   ├── gemini.config.ts    # Vertex AI configuration
-│   │   └── google.config.ts    # Google Cloud credentials setup
-│   ├── routes/
-│   │   ├── ai.routes.ts        # AI routes (chat & insights)
-│   ├── services/
-│   │   ├── ai.service.ts       # AI logic using Gemini API
-│   │   ├── translation.service.ts # Google Translation
-│   │   └── memory.service.ts    # (Optional) Firestore chat memory
-│   ├── utils/
-│   │   └── logger.ts           # Custom logger
-│   └── jobs/                   # Future scheduled tasks
-├── package.json
-├── tsconfig.json
-└── .env (not committed)
-
-````
+- Node.js ≥ 18.x
+- TypeScript ≥ 5.x
 
 ---
 
-## ✅ Setup Instructions
+ 🔧 Getting Started
 
-### 1️⃣ **Clone the Repo**
+ 🔗 Repository
+
+GitHub: [Project-Raseed-Backend](https://github.com/Akshatsachdev/Project-Raseed-Backend)
+
+ 📁 Setup Instructions
+
+1. Clone the Repository
+
 ```bash
-git clone https://github.com/Akshatsachdev/Code-Garage-backend.git
-cd Code-Garage-backend
+git clone https://github.com/Akshatsachdev/Project-Raseed-Backend.git
+cd Project-Raseed-Backend
 ````
 
-### 2️⃣ **Install Dependencies**
+2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3️⃣ **Setup Environment Variables**
+3. Create `.env` File
 
-Create a `.env` file:
+Create a `.env` file in the root directory with the following content:
 
-```
-GCLOUD_PROJECT_ID=your-project-id
-GOOGLE_APPLICATION_CREDENTIALS=./service-account.json
-LOCATION=us-central1
-VERTEX_AI_MODEL=gemini-1.5-pro
-PORT=3000
+```env
+PORT=8080
+GOOGLE_CLOUD_PROJECT=project-raseed
 ```
 
-### 4️⃣ **Add Google Credentials**
-
-Download your **service-account.json** from Google Cloud Console and place it in the root folder.
-**⚠ Do NOT commit this file to GitHub. It is ignored in `.gitignore`.**
-
-### 5️⃣ **Build and Run**
-
-For development:
+4. Run in Development Mode
 
 ```bash
 npm run dev
 ```
 
-For production:
+5. Build the Project
 
 ```bash
 npm run build
+```
+
+6. Run Production Server
+
+```bash
 npm start
 ```
 
 ---
 
-## ✅ API Endpoints
+## 🗂️ Project Structure
 
-### **1. AI Chat**
-
-```
-POST /api/ai/chat
-```
-
-**Request Body:**
-
-```json
-{
-  "message": "Give me some budgeting tips",
-  "userId": "user123",
-  "language": "en"
-}
-```
-
-**Response:**
-
-```json
-{
-  "response": "Here are some budgeting tips..."
-}
-```
-
-### **2. Expense Insights**
-
-```
-POST /api/ai/insights
-```
-
-**Request Body:**
-
-```json
-{
-  "transactions": [
-    { "date": "2025-07-20", "amount": 500, "category": "Food" },
-    { "date": "2025-07-21", "amount": 1500, "category": "Shopping" }
-  ],
-  "userId": "user123"
-}
+```bash
+project-raseed-backend/
+├── src/
+│   ├── configs/          # Firebase & GCP mock configurations
+│   ├── controllers/      # Request handlers for API routes
+│   ├── middlewares/      # Auth, validation, and error handling
+│   ├── repositories/     # Mock Firestore data access logic
+│   ├── routes/           # API route definitions
+│   ├── services/         # Core business logic (OCR, AI, etc.)
+│   ├── types/            # Global TypeScript interfaces and types
+│   └── utils/            # Logger, helpers, etc.
+├── dist/                 # Compiled JS output (after build)
+├── .env                  # Environment config (not committed)
+├── package.json
+└── README.md
 ```
 
 ---
 
-## ✅ Deployment
+ 🧪 API Testing (cURL / Postman)
 
-* **Firebase Hosting (Frontend)**
-* **Backend Options**:
+ 🔐 Register a User
 
-  * Google Cloud Run
-  * Firebase Functions
-  * Any Node.js hosting platform
-
----
-
-## ✅ Security
-
-* All sensitive data is stored in `.env` and not pushed to GitHub.
-* Google credentials are ignored in `.gitignore`.
+```bash
+curl -X POST http://localhost:8080/api/auth/register \
+-H "Content-Type: application/json" \
+-d '{"email":"test@example.com","password":"password123","role":"user"}'
+```
 
 ---
 
-## ✅ License
+ 🧾 Upload a Receipt
+
+```bash
+curl -X POST http://localhost:8080/api/receipts/upload \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer mock-token-user_<random_string>" \
+-d '{"imageUrl":"http://example.com/receipt.jpg","userId":"user_<random_string>"}'
+```
+
+---
+
+ 💬 Chat with AI Assistant
+
+```bash
+curl -X POST http://localhost:8080/api/assistant/chat \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer mock-token-user_<random_string>" \
+-d '{"message":"What is my budget?","userId":"user_<random_string>","language":"en"}'
+```
+
+---
+
+ 🔐 Environment Variables
+
+| Variable               | Description           | Default          |
+| ---------------------- | --------------------- | ---------------- |
+| `PORT`                 | Server listening port | `8080`           |
+| `GOOGLE_CLOUD_PROJECT` | GCP mock project ID   | `project-raseed` |
+
+---
+
+ 📄 License
 
 MIT License © 2025 [Akshat Sachdeva](https://github.com/Akshatsachdev)
 
----
+```
