@@ -24,7 +24,7 @@ This backend simulates integrations with Google Cloud and Firebase services usin
 - Node.js ≥ 18.x
 - TypeScript ≥ 5.x
 
----
+````
 🔧 Getting Started
 
 🔗 Repository
@@ -36,10 +36,10 @@ GitHub: [Project-Raseed-Backend](https://github.com/Akshatsachdev/Project-Raseed
 
 1. Clone the Repository
 
-bash
+```bash
 git clone https://github.com/Akshatsachdev/Project-Raseed-Backend.git
 cd Project-Raseed-Backend
-````
+```
 
 2. Install Dependencies
 
